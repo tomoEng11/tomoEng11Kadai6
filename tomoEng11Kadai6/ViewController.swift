@@ -15,11 +15,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpSlider()
-        makeRandomInt()
+        updateCurrentNumberWithRandomAndDisplay()
     }
 
     private func setUpSlider() {
-        slider.minimumValue = 0
+        slider.minimumValue = 1
         slider.maximumValue = 100
     }
 
@@ -32,15 +32,15 @@ class ViewController: UIViewController {
         }
     }
 
-    private func makeRandomInt() {
-        currentNumber = Int.random(in: 0...100)
+    private func updateCurrentNumberWithRandomAndDisplay() {
+        currentNumber = Int.random(in: 1...100)
         label.text = String(currentNumber)
     }
 
     private func showAlert(message: String) {
         let alert = UIAlertController(title: "結果", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "再挑戦", style: .default){ (action) in
-            self.makeRandomInt()
+            self.updateCurrentNumberWithRandomAndDisplay()
         }
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
